@@ -1,0 +1,69 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+
+
+
+      <div class="form-group">
+        <b>
+        <label for="id">(ID ES INGREMENTABLE)</label>
+      </b>
+        <input
+          type="text"
+          disabled="true"
+          class="form-control"
+          id="id"
+          required
+          [(ngModel)]="grupo.id"
+          name="id"
+        />
+      </div>
+
+
+      <div class="form-group">
+        <label for="nombre">NOMBRE</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          required
+          [(ngModel)]="grupo.nombre"
+          name="nombre"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="curso">CURSO</label>
+        <input
+          class="form-control"
+          id="curso"
+          required
+          [(ngModel)]="grupo.curso"
+          name="curso"
+        />
+      </div>
+
+
+      <div class="form-group">
+        <label for="integrantes">INTEGRANTES</label>
+        <input
+          class="form-control"
+          id="integrantes"
+          required
+          [(ngModel)]="grupo.integrantes"
+          name="integrantes"
+        />
+      </div>
+
+
+
+
+      <button (click)="saveGrupo()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Grupo was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newGrupo()">Add</button>
+    </div>
+  </div>
+</div>

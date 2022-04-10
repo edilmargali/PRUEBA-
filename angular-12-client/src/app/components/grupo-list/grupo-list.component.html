@@ -1,0 +1,98 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by nombre"
+        [(ngModel)]="nombre"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchTitle()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>LISTA DE GRUPO</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let grupos of grupo; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveGrupos(grupos, i)"
+      >
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>CURSO</th>
+            <th>INTEGRANTES</th>
+
+
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ grupos.id }}</td>
+            <td>{{ grupos.nombre }}</td>
+            <td>{{ grupos.curso }}</td>
+            <td>{{ grupos.integrantes }}</td>
+
+            <td>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+      </li>
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllGrupos()">
+      Remove All
+    </button>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentGrupo.id">
+      <h4>Grupo</h4>
+      <div>
+        <label><strong>NOMBRE:</strong></label> {{ currentGrupo.nombre }}
+      </div>
+
+      <div>
+        <label><strong>CURSO:</strong></label> {{ currentGrupo.curso }}
+      </div>
+
+      <div>
+          <label><strong>INTEGRANTES:</strong></label>{{ currentGrupo.integrantes }}
+        </div>
+
+
+      <div>
+        <label><strong>STATUS:</strong></label>
+        {{ currentGrupo.published ? "PUBLICADO" : "PENDIENTE" }}
+      </div>
+
+      <a class="badge badge-warning" routerLink="/grupos/{{ currentGrupo.id }}">
+        Edit
+      </a>
+    </div>
+
+    <div *ngIf="!currentGrupo">
+      <br />
+      <p>Please click on a Grupos...</p>
+    </div>
+  </div>
+</div>

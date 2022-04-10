@@ -1,0 +1,96 @@
+<div>
+  <div *ngIf="currentGrupo.id" class="edit-form">
+    <h4>GRUPO</h4>
+    <form>
+
+
+
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input
+          type="text"
+          disabled="true"
+          class="form-control"
+          id="id"
+          [(ngModel)]="currentGrupo.id"
+          name="id"
+        />
+      </div>
+
+
+      <div class="form-group">
+        <label for="nombre">NOMBRE</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          [(ngModel)]="currentGrupo.nombre"
+          name="nombre"
+        />
+      </div>
+      <div class="form-group">
+        <label for="curso">CURSO</label>
+        <input
+          type="text"
+          class="form-control"
+          id="curso"
+          [(ngModel)]="currentGrupo.curso"
+          name="curso"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="integrantes">INTEGRANTES</label>
+        <input
+          type="text"
+          class="form-control"
+          id="integrantes"
+          [(ngModel)]="currentGrupo.integrantes"
+          name="integrantes"
+        />
+      </div>
+
+
+
+
+      <div class="form-group">
+        <label><strong>STATUS:</strong></label>
+        {{ currentGrupo.published ? "PUBLICADO" : "PENDIENTE" }}
+      </div>
+    </form>
+
+    <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentGrupo.published"
+      (click)="updatePublished(false)"
+    >
+      UnPublish
+    </button>
+    <button
+      *ngIf="!currentGrupo.published"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Publish
+    </button>
+
+    <button class="badge badge-danger mr-2" (click)="deleteGrupo()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateGrupo()"
+    >
+      Update
+    </button>
+
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentGrupo.id">
+    <br />
+    <p>Cannot access this Grupo...</p>
+  </div>
+</div>
